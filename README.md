@@ -1,11 +1,13 @@
-Aquí tienes el archivo `README.md` en español, basado en la especificación OpenAPI que proporcionaste:
-
-```markdown
 # Documentación de la API
 
 ## Descripción general
 
 Este documento proporciona detalles sobre la API, incluyendo los endpoints y las estructuras de datos utilizadas en las solicitudes y respuestas.
+
+## Video de demostración
+
+<iframe src="https://drive.google.com/file/d/1W06rE1_0TqTyiyV70Iyon3nBSS9b7Ky2/view?usp=sharing" width="640" height="480" allow="autoplay"></iframe>
+
 
 ## Versión de la API
 
@@ -333,9 +335,7 @@ Este documento proporciona detalles sobre la API, incluyendo los endpoints y las
     "name": "Empleado Actualizado",
     "departments": "Finanzas",
     "phone": 123456789,
-    "birthday": "1995
-
--03-15",
+    "birthday": "1995-03-15",
     "work_time": "09:00:00"
   }
   ```
