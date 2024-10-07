@@ -6,7 +6,7 @@ Este documento proporciona detalles sobre la API, incluyendo los endpoints y las
 
 ## Video de demostración
 
-<iframe src="https://drive.google.com/file/d/1W06rE1_0TqTyiyV70Iyon3nBSS9b7Ky2/view?usp=sharing" width="640" height="480" allow="autoplay"></iframe>
+[Ver video en Google Drive](https://drive.google.com/file/d/1W06rE1_0TqTyiyV70Iyon3nBSS9b7Ky2/view?usp=sharing)
 
 
 ## Versión de la API
