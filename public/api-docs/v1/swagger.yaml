@@ -1,0 +1,546 @@
+openapi: 3.0.0
+info:
+  title: API
+  description: API Description
+  version: '1.0.0'
+servers:
+  - url: 'http://localhost:3000'
+    description: Local server
+paths:
+  /users:
+    get:
+      summary: Listar usuarios
+      operationId: listUsers
+      responses:
+        '200':
+          description: Lista de usuarios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+      tags:
+        - Users
+    post:
+      summary: Crear un nuevo usuario
+      operationId: createUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "John Doe"
+                password:
+                  type: string
+                  example: "securepassword123"
+                email:
+                  type: string
+                  format: email
+                  example: "johndoe@example.com"
+                birthday:
+                  type: string
+                  format: date
+                  example: "1990-01-01"
+                phone:
+                  type: string
+                  example: "+1234567890"
+      responses:
+        '201':
+          description: Usuario creado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  password:
+                    type: string
+                  email:
+                    type: string
+                    format: email
+                  birthday:
+                    type: string
+                    format: date
+                  phone:
+                    type: string
+      tags:
+        - Users
+
+  /users/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID del usuario
+        schema:
+          type: string
+          
+    get:
+      summary: Mostrar usuario
+      operationId: showUser
+      responses:
+        '200':
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+      tags:
+        - Users
+
+    patch:
+      summary: Actualizar usuario
+      operationId: updateUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: Usuario actualizado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+      tags:
+        - Users
+
+    put:
+      summary: Reemplazar usuario
+      operationId: replaceUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "John Doe"
+                password:
+                  type: string
+                  example: "securepassword123"
+                email:
+                  type: string
+                  format: email
+                  example: "johndoe@example.com"
+                birthday:
+                  type: string
+                  format: date
+                  example: "1990-01-01"
+                phone:
+                  type: string
+                  example: "+1234567890"
+      responses:
+        '200':
+          description: Usuario reemplazado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                    example: "John Doe"
+                  password:
+                    type: string
+                    example: "securepassword123"
+                  email:
+                    type: string
+                    format: email
+                    example: "johndoe@example.com"
+                  birthday:
+                    type: string
+                    format: date
+                    example: "1990-01-01"
+                  phone:
+                    type: string
+                    example: "+1234567890"
+      tags:
+        - Users
+
+    delete:
+      summary: Eliminar usuario
+      operationId: deleteUser
+      responses:
+        '200':
+          description: Usuario eliminado
+      tags:
+        - Users
+  /departments:
+    get:
+      summary: "List departments"
+      operationId: "listDepartments"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                example: 
+                  # Aquí puedes agregar un ejemplo de respuesta
+                  departments:
+                    - id: 1
+                      name: "HR"
+                    - id: 2
+                      name: "Engineering"
+      tags:
+        - Department
+    post:
+      summary: "Create department"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "RH"
+      operationId: "createDepartment"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  # Aquí puedes agregar un ejemplo de la respuesta para la creación de un departamento
+                  id: 1
+                  name: "New Department"
+      tags:
+        - Department
+
+  /departments/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The department ID
+        schema:
+          type: string
+    get:
+      summary: "Show department"
+      operationId: "showDepartment"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 123
+                  name: "HR"
+      tags:
+        - Department
+    patch:
+      summary: "Update department"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "RH"
+      operationId: "updateDepartment"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 123
+                  name: "Updated Department"
+      tags:
+        - Department
+    put:
+      summary: "Update department"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "RH"
+      operationId: "updateDepartmentFull"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 123
+                  name: "Updated Department"
+      tags:
+        - Department
+    delete:
+      summary: "Delete department"
+      operationId: "deleteDepartment"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "Department deleted successfully"
+      tags:
+        - Department
+  /employees:
+    get:
+      tags:
+        - Employees
+      summary: "List employees"
+      operationId: "listEmployees"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+              example:
+                - id: 1
+                  name: "John Doe"
+                  departments: "HR"
+                  phone: 123456789
+                  birthday: "1990-01-01"
+                  work_time: "08:00:00"
+                - id: 2
+                  name: "Jane Smith"
+                  departments: "Engineering"
+                  phone: 987654321
+                  birthday: "1985-05-10"
+                  work_time: "09:00:00"
+    post:
+      tags:
+        - Employees
+      summary: "Create a new employee"
+      operationId: "createEmployee"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeInput'
+            example:
+              name: "New Employee"
+              departments: "Sales"
+              phone: 123456789
+              birthday: "1995-03-15"
+              work_time: "09:00:00"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+              example:
+                id: 1
+                name: "New Employee"
+                departments: "Sales"
+                phone: 123456789
+                birthday: "1995-03-15"
+                work_time: "09:00:00"
+
+  /employees/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The employee ID
+        schema:
+          type: string
+    get:
+      tags:
+        - Employees
+      summary: "Show employee"
+      operationId: "showEmployee"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+              example:
+                id: 123
+                name: "John Doe"
+                departments: "HR"
+                phone: 123456789
+                birthday: "1990-01-01"
+                work_time: "08:00:00"
+    patch:
+      tags:
+        - Employees
+      summary: "Update employee"
+      operationId: "updateEmployee"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeInput'
+            example:
+              name: "Updated Employee"
+              departments: "Finance"
+              phone: 123456789
+              birthday: "1995-03-15"
+              work_time: "09:00:00"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+              example:
+                id: 123
+                name: "Updated Employee"
+                departments: "Finance"
+                phone: 123456789
+                birthday: "1995-03-15"
+                work_time: "09:00:00"
+    put:
+      tags:
+        - Employees
+      summary: "Update employee"
+      operationId: "updateEmployeeFull"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeInput'
+            example:
+              name: "Updated Employee"
+              departments: "Finance"
+              phone: 123456789
+              birthday: "1995-03-15"
+              work_time: "09:00:00"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+              example:
+                id: 123
+                name: "Updated Employee"
+                departments: "Finance"
+                phone: 123456789
+                birthday: "1995-03-15"
+                work_time: "09:00:00"
+    delete:
+      tags:
+        - Employees
+      summary: "Delete employee"
+      operationId: "deleteEmployee"
+      responses:
+        '200':
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: "Employee deleted successfully"
+
+components:
+  schemas:
+    Employee:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        departments:
+          type: string
+        phone:
+          type: integer
+        birthday:
+          type: string
+          format: date
+        work_time:
+          type: string
+          format: time
+      required:
+        - id
+        - name
+        - departments
+        - phone
+        - birthday
+        - work_time
+
+    EmployeeInput:
+      type: object
+      properties:
+        name:
+          type: string
+        departments:
+          type: string
+        phone:
+          type: integer
+        birthday:
+          type: string
+          format: date
+        work_time:
+          type: string
+          format: time
+      required:
+        - name
+        - departments
+        - phone
+        - birthday
+        - work_time
