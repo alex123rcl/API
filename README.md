@@ -1,6 +1,3 @@
-Aquí tienes el archivo `README.md` en español, basado en la especificación OpenAPI que proporcionaste:
-
-```markdown
 # Documentación de la API
 
 ## Descripción general
