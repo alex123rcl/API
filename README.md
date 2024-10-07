@@ -330,9 +330,7 @@ Este documento proporciona detalles sobre la API, incluyendo los endpoints y las
     "name": "Empleado Actualizado",
     "departments": "Finanzas",
     "phone": 123456789,
-    "birthday": "1995
-
--03-15",
+    "birthday": "1995-03-15",
     "work_time": "09:00:00"
   }
   ```
